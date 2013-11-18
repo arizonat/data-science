@@ -1,0 +1,28 @@
+1. 
+   (a)
+	Avg AUC: 0.7832882395382396
+	Misclassification pct: 20.666666666666667%
+
+2. 
+   (a) 
+       By using nested regression and selecting for approximately 10 features each iteration, the avg auc is 0.7723149350649351
+
+   (b)
+	Created a generator that provides a little insight to the cross validation, the results are:
+
+	1) (0.7826587301587301,
+ Index([u'sex', u'trestbps', u'chol', u'fbs', u'restecg', u'thalach', u'exang', u'oldpeak', u'ca', u'thal'], dtype=object))
+
+ 	2) (0.7431493506493507,
+ Index([u'age', u'sex', u'cp', u'trestbps', u'fbs', u'restecg', u'thalach', u'exang', u'slope', u'thal'], dtype=object))
+
+ 	3) (0.8006060606060605,
+ Index([u'age', u'cp', u'trestbps', u'chol', u'restecg', u'exang', u'oldpeak', u'slope', u'ca', u'thal'], dtype=object))
+	
+	4) (0.8105681818181818,
+ Index([u'age', u'sex', u'cp', u'trestbps', u'chol', u'fbs', u'thalach', u'oldpeak', u'slope', u'ca', u'thal'], dtype=object))
+
+ 	5) (0.7741378066378066,
+ Index([u'age', u'sex', u'cp', u'chol', u'fbs', u'restecg', u'thalach', u'exang', u'oldpeak', u'slope', u'ca'], dtype=object))
+
+ 	Based on these results, the 4th selection of features seems to be optimal, so removing "restecg" and "exang" seems to be best 
