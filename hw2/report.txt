@@ -1,0 +1,12 @@
+1. kNN and CV
+
+    a) It was pretty difficult to pinpoint precisely the best kNN value. My code produced accuracies all within 65-75% accuracy all the way from 1 to 81 for k. I may have implemented something incorrectly. I ran it across 1 to 81 for k, and then checked for the highest accuracy. But running it individually a few times over, basically showed that all of them were approximately the same.
+
+    b) Linear Regression very consistently produces much more accurate results (approximately 95% accuracy), as opposed to the ~70%accuracy for kNN
+
+2. 
+    a) First thing to note for the minimal MSE's to fit a particular line, in the case of h(x) = b, b = avg. of the two y-values and h(x) = ax + b, simply find the line that intersects both points.
+
+    The average value of b for h(x) = b is 0.00022346927883974915 after 10000 iterations (close to 0)
+
+    The average values for slope and intercept (h(x) = ax + b) is (0.8927212687308338, -0.00012349933122033429) after 10000 iterations
