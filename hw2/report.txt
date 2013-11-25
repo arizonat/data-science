@@ -10,3 +10,8 @@
     The average value of b for h(x) = b is 0.00022346927883974915 after 10000 iterations (close to 0)
 
     The average values for slope and intercept (h(x) = ax + b) is (0.8927212687308338, -0.00012349933122033429) after 10000 iterations
+
+    In terms of bias, the best possible hypothesis for h(x) = b, is h(x) = 0 and for h(x) = ax + b, is the line at approx. 30 degree slope. The area under the curve to each respective line provides the relative error for each (true distance is the square). The h(x) = ax + b would have a much lower value, and hence less error, and hence less bias, than the h(x) = b model.
+
+    In terms of variance, the average slope for h(x) = ax + b is much higher than the ideal (hence high variance), but the average for h(x) = b is 0.00022... distance away from h(x) = b, and hence has a much lower variance.
+    
