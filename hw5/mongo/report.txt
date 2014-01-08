@@ -1,0 +1,10 @@
+MongoDB:
+
+a) Query to find from Andrew Fastow to Jeff Skilling:
+
+db.messages.find( { 'headers.From': /andrew.fastow@enron.com/i, 'headers.To': /jeff.skilling@enron.com/i}).count()
+
+b) 
+{ "_id" : { "From" : "susan.mara@enron.com", "To" : "richard.shapiro@enron.com" }, "value" : 974 }
+
+Code is attached separately
