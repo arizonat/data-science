@@ -2,7 +2,7 @@
 
 import numpy as np
 import pandas as pd
-import pylab as pl      # note this is part of matplotlib
+#import pylab as pl      # note this is part of matplotlib
 
 from sklearn import cross_validation as cv
 from sklearn.linear_model import LogisticRegression as LR
@@ -56,7 +56,7 @@ def train_and_classify(n_folds=NUM_FOLDS, features=FEATURES, labels=LABELS):
 
         model = LR()
         model.fit(train_features, train_labels)
-        
+        yield model
         pred_labels = model.predict(test_features)
 
         num_classified += len(pred_labels)
@@ -76,8 +76,8 @@ def train_and_classify(n_folds=NUM_FOLDS, features=FEATURES, labels=LABELS):
     avg_auc = float(auc_total)/num_iterations
     pct_misclassified = float(num_misclassified)/num_classified
 
-    #yield (avg_auc, pct_misclassified)
-    return (avg_auc, pct_misclassified)
+    yield (avg_auc, pct_misclassified)
+    #return (avg_auc, pct_misclassified)
 
 def plot_roc(fpr, tpr, roc_auc):
     pl.clf()

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import pandas as pd
 import numpy as np
 from dateutil import parser
 from nltk import NaiveBayesClassifier as nbc
@@ -61,53 +62,12 @@ def train_nltk(data, labels):
     best_model.show_most_informative_features(30)
     return best_model
 
-
-def train_sklearn(data):
-    pass
-
-def parse(f_in):
-    '''
-    Return!
-    '''
-    # Ignores all comments without times
-    #data = np.array([("","")]*3229) #3229 rows with times in training set, this is to preallocate
-    #labels = np.array([0]*3229) #shallow copy of primitives is okay
-    
-    data = [("","")]*3229
-    labels = [0]*3229
-    i = 0
-
-    with open(f_in) as f:
-        f.readline()
-        for line in f:
-            insult,_,rem = line.partition(",")
-            labels[i] = int(insult)
-
-            datestr,_,comment = rem.partition(",")            
-            # continue if any are blank
-            if "" in [insult, datestr, comment]:
-                continue
-
-            dt = parser.parse(datestr[:-1])
-            comment = comment.strip().strip("\"")
-            data[i] = (dt, comment)
-            
-            #print dt.strftime("%-I:%M%p %-d %h %Y")
-            i+=1
-    return (data, labels)
-
 if __name__ == "__main__":
-    data, labels = parse("nb_train.csv")
-    comments = np.array([comment for datestr, comment in data])
-    labels = np.array(labels)
-    nbc_model = train_nltk(comments, labels)
-    pred_f = open("nb_predict.csv","w")
-    with open("nb_test.csv") as f:
-        f.readline() # skip the first line
-        for line in f:
-            datestr,_,comment = line.partition(",")            
-            comment = comment.strip().strip("\"")
-            features = extract_ngram_features(comment)
-            clf = nbc_model.classify(features)
-            pred_f.write(str(clf) + "\n")
-    pred_f.close()
+    data = pd.read_csv("nb_train.csv",sep=",")
+    labels = data.filter(["Insult"])
+    records = data.drop(["Insult"],1)
+
+    nbc_model = train_nltk(records, labels)
+    pred_f = pd.read_csv("nb_predict.csv",sep=",")
+
+    map(nbc_model.classify, pred_f)

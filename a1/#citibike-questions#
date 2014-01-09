@@ -1,0 +1,13 @@
+1. Largest # docks total:
+cat citibike.csv | sort -nr -t, -k9 | head -n1
+521,8 Ave & W 31 St,8 Ave & W 31 St,,40.75044999,-73.99481051,61,6,67,In Service,1,False
+
+
+2. Highest % available bikes:
+'351,Front St & Maiden Ln,Front St & Maiden Ln,,40.70530954,-74.00612572,39,0,39,In Service,1,False\n'
+
+
+
+3. In terms of numerical information, this dataset provides location information, and bike/spot availabilities. People might find it useful to know where to park, where to get a bike, and if it was possible to obtain timing information, might be useful for citibike to know how to best distribute their bikes and create new bike stations. Create a sivualization heat map based on # available for bikes (% might not be as useful) and # available slots at a given time. Could use %age if there was distribution over time information.
+
+4. Given current location, use lat. and long. to figure out euclidean distance (since lat./long. is based on spherical coordinates, need to transform). Can then iterate through all distances to find smallest distance (this algorithm gets slower with each additional station, runtime of O(n), n number of stations). If memory isn't an issue, can create a dictionary of lat./long. floored values (discretize possible values into integers), then create a dictionary mapping every point ahead of time to their nearest stations, algorithm is O(1), requires O(n) memory, n number of lat./long. points

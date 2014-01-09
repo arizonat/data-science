@@ -1,9 +1,9 @@
 import math
 import numpy as np
-import pylab as pl
+#import pylab as pl
 import pandas as pd
 
-from matplotlib.colors import ListedColormap
+#from matplotlib.colors import ListedColormap
 
 from sklearn import cross_validation as cv
 from sklearn.datasets import load_iris
